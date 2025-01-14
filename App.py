@@ -5,6 +5,32 @@ vegetables_name = {}
 user_input = ""
 system_choice = ""
 
+
+
+# checks the user input 
+def guessing(list_name):
+    system_choice  = random.choice(list(list_name.keys()))
+    hint = list_name[system_choice]
+    print(f"Your hint is :  {hint}")
+    
+    count = 0
+    while count < 4:
+          count += 1
+          user_input = input(f" Enter the  Name ") 
+          if user_input.lower()== system_choice.lower():
+              print("Hurray Correct Guess : Won  ")
+              break
+             
+          elif user_input.lower() != system_choice.lower():
+              print(" Incorrect Guess Try Again")
+
+    if user_input.lower() != system_choice.lower():
+        print("Game Loss")
+
+    
+
+
+
 def animals():
     global animals_name , user_input, system_choice
     animals_name = {
@@ -19,36 +45,9 @@ def animals():
     "Rabbit": "Hops and eats carrots.",
     "Duck": "Quacks and swims."}
 
-    print(animals_name)
-
     
-    system_choice  = random.choice(list(animals_name.keys()))
-    hint = animals_name[system_choice]
-    print(f"Your hint is :  {hint}")
-    print(system_choice)
-    count = 0
-    while count < 4:
-          count += 1
-          user_input = input(" Enter the Animal Name ") 
-          if user_input.lower()== system_choice.lower():
-              print("Hurray Correct Guess : Won  ")
-              break
-             
-          elif user_input.lower() != system_choice.lower():
-              print(" Incorrect Guess Try Again")
-
-
-    
-        
-
-
-
-
-
-    
-    
-
-
+    guessing(animals_name)
+     
    
 def vegetables():
     global vegetables_name , user_input
@@ -63,9 +62,12 @@ def vegetables():
     "Spinach": "Leafy and rich in iron.",
     "Peas": "Small and green in pods.",
     "Capsicum": "Bell-shaped, comes in many colors."}
-    print(vegetables_name)
-    user_input = input(" Enter the Word ")
- 
+    
+    
+    guessing(vegetables_name)
+    
+
+
 
 user_choice = int(input("""Select the Category you want to guess 
                         1.  Animals
@@ -74,10 +76,10 @@ user_choice = int(input("""Select the Category you want to guess
 
 if user_choice == 1:
   animals()
+
   
-  if user_input.lower() != system_choice.lower():
-      print("Game Loss")
 elif user_choice == 2:
   vegetables()
+
 
 
